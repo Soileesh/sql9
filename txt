@@ -1,0 +1,51 @@
+create table loancontract(
+contr_id number,
+curr_id number,
+full_name nvarchar2(25),
+amount number
+);
+insert into loancontract
+values(1,950,'AlbertOsaka',100);
+insert into loancontract
+values(2,300,'HumarMirzeyeva',15000);
+insert into loancontract
+values(3,450,'JessicaNorman',2500);
+insert into loancontract
+values(4,350,'JessyNorm',3400);
+select full_name,amount,case curr_id 
+when 950 then 'AZN' 
+when 300 then 'USD'
+end as Valyuta
+from loancontract;
+
+select DISTINCT status FROM orders;
+select order_id, case status
+when 'Pending' then 'gozlemede' 
+when 'Canceled' then 'catdirilmis'
+when 'Shipped' then 'legvedilmis'
+end as STATUS_
+from orders;
+select*from orders;
+
+SELECT*FROM orders order by order_date;
+select '20'|| substr(to_char(order_date),-2)from orders;
+select order_date from orders where 
+extract (year from order_date)=2013;
+
+select case 
+when extract (year from order_date)=2013 then '2013-cu il'
+when extract (year from order_date)=2016 then '2016-cu il'
+when extract (year from order_date)=2015 then '2015-ci il'
+end
+as il from orders;
+
+select*from dual;
+select case 2 when 2 then 'yes'
+when 3 then 'no'
+end 
+from dual;
+select case 
+when 2013<2010 then 'a'
+when 2013=2012 then 'b'
+else 'k'
+end from dual;
